@@ -19,7 +19,17 @@ class ProductTranslationOptions(TranslationOptions):
 
 @register(Country)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('specializations', 'countrys', 'higher')
+    fields = ('name',)
+
+
+@register(University)
+class ProductTranslationOptions(TranslationOptions):
+    fields = ('name',)
+
+
+@register(Faculty)
+class ProductTranslationOptions(TranslationOptions):
+    fields = ('name', 'description')
 
 
 @register(Contacts)

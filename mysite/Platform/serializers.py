@@ -20,9 +20,21 @@ class StudyAbroadSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class FacultySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Faculty
+        fields = '__all__'
+
+
 class CountrySerializers(serializers.ModelSerializer):
     class Meta:
         model = Country
+        fields = '__all__'
+
+
+class UniversitySerializers(serializers.ModelSerializer):
+    class Meta:
+        model = University
         fields = '__all__'
 
 

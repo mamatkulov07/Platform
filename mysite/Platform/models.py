@@ -35,42 +35,39 @@ class StudyAbroad(models.Model):
 
 
 class Country(models.Model):
-    highereducation = (
-        ('Secondary Educations', 'Secondary Educations'),
-        ('Higher Educations', 'Higher Educations'),
-        ('Language courses for youth', 'Language courses for youth'),
-        ('Children language camps', 'Children language camps'),
-    )
-    higher = models.CharField(max_length=100, choices=highereducation)
-    specialization = (
-        ('IT Technologies', 'IT Technologies'),
-        ('Business', 'Business'),
-        ('Medicine', 'Medicine'),
-        ('International Relationship', 'International Relationship'),
-        ('Tourism', 'Tourism')
-    )
-    specializations = models.CharField(max_length=100, choices=specialization)
-    country = (
-        ('America', 'America'),
-        ('Germany', 'Germany'),
-        ('Austria', 'Austria'),
-        ('Italy', 'Italy'),
-        ('Spain', 'Spain'),
-        ('Greate Britain', 'Greate Britain'),
-        ('China', 'China'),
-        ('Latvia', 'Latvia'),
-        ('Indonesia', 'Indonesia'),
-        ('Holland', 'Holland'),
-        ('Ireland', 'Ireland'),
-        ('Cyprus', 'Cyprus'),
-        ('Canada', 'Canada'),
-    )
-    countrys = models.CharField(max_length=100, choices=country)
-    image = models.ImageField(upload_to='countryimage/', null=True, blank=True)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class University(models.Model):
+    location = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
+    typeofprogramis = models.TextField()
+    language = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='universityimage/', null=True, blank=True)
+    description = models.TextField()
+    date = models.TextField()
+    cost = models.TextField()
+    photo = models.ImageField(upload_to='image/', null=True, blank=True)
+    category = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
+class Faculty(models.Model):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    university = models.ForeignKey(University, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='facultyimage/', null=True, blank=True)
+    description = models.TextField()
     studyabroad = models.ForeignKey(StudyAbroad, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.countrys
+        return self.name
 
 
 class Contacts(models.Model):

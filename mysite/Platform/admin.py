@@ -10,6 +10,36 @@ from modeltranslation.admin import TranslationAdmin
 # admin.site.register(Contacts)
 
 
+@admin.register(University)
+class ProductAdmin(TranslationAdmin):
+    list_display = ('name', )
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+
+@admin.register(Faculty)
+class ProductAdmin(TranslationAdmin):
+    list_display = ('name', 'description')
+
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+
 @admin.register(Home)
 class ProductAdmin(TranslationAdmin):
     list_display = ("title", 'name', 'description', 'exams')
@@ -57,7 +87,7 @@ class ProductAdmin(TranslationAdmin):
 
 @admin.register(Country)
 class ProductAdmin(TranslationAdmin):
-    list_display = ("specializations", 'countrys', 'higher',)
+    list_display = ('name', )
 
     class Media:
         js = (
